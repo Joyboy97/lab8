@@ -39,6 +39,7 @@ public class Game {
 
 	public void StartGame() throws DrawException, GameException {
 		// TODO: Complete this method
+
 		if (cllPlayers.isEmpty()) {
 			throw new GameException(this, eGameExceptionType.NoPlayers);
 		}
@@ -125,8 +126,7 @@ public class Game {
 	public Board getGameBoard() {
 		return GameBoard;
 	}
-
-	public void AddPlayer(Player p) {
+  void AddPlayer(Player p) {
 		cllPlayers.addNode(p);
 	}
 

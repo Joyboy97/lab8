@@ -28,9 +28,9 @@ public class GameLab8Test {
 		letters.add(new Letter('B'));
 		
 		tileBag = BoardUtil.getTileBag(b);
-		assertEquals(92,BoardUtil.getTileBag(b).size());
+		assertEquals(100,BoardUtil.getTileBag(b).size());
 		b = BoardUtil.RemoveTileFromBag(b, letters);
-		assertEquals(90,BoardUtil.getTileBag(b).size());
+		assertEquals(98,BoardUtil.getTileBag(b).size());
 		Util.PrintEnd(new Throwable().getStackTrace()[0].getMethodName());
 	}
  	
@@ -69,7 +69,7 @@ public class GameLab8Test {
 	@Test
 	public void GameTestThrowExeption1() {
 		Util.PrintStart(new Throwable().getStackTrace()[0].getMethodName());
-		Game g = new Game();
+		Game g = new Game();           
 		Player p1 = new Player("Bert");
 		Player p2 = new Player("Joe");
 		g.AddPlayer(p1);
@@ -107,7 +107,7 @@ public class GameLab8Test {
 	@Test
 	public void GameTestPlayerTileBag()
 	{
-		Util.PrintStart(new Throwable().getStackTrace()[0].getMethodName());
+ 		Util.PrintStart(new Throwable().getStackTrace()[0].getMethodName());
 		Game g = new Game();
 		Player p1 = new Player("Jim");
 		Player p2 = new Player("Jill");
