@@ -39,6 +39,14 @@ public class Game {
 
 	public void StartGame() throws DrawException, GameException {
 		// TODO: Complete this method
+		if (cllPlayers.isEmpty()) {
+			throw new GameException(this, eGameExceptionType.NoPlayers);
+		}
+		for (Player player : cllPlayers) {
+			playerTileRack.put(player.getPlayerID(), GameBoard.drawLetter(7));
+		}
+
+
 	}
 
 	public Player MakeMove(Move m) throws MoveException {
@@ -78,10 +86,7 @@ public class Game {
 	 */
 
 	private ArrayList<Letter> getPlayersTiles(Player p) {
-		// TODO: Complete this method
-
-		// FIXME: I don't want to return a null!
-		return null;
+		return playerTileRack.get(p.getPlayerID());
 
 	}
 
@@ -96,7 +101,7 @@ public class Game {
 	 */
 
 	private void removePlayerTile(Player p, Letter l) {
-		// TODO: Complete this method
+		getPlayersTiles(p).remove(l);
 	}
 
 	/**
@@ -109,7 +114,8 @@ public class Game {
 	 * @param l
 	 */
 	private void addPlayerTile(Player p, Letter l) {
-		// TODO: Complete this method
+		getPlayersTiles(p).add(l);
+
 	}
 
 	public UUID getGameID() {

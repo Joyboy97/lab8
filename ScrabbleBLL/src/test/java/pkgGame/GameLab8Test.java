@@ -33,7 +33,7 @@ public class GameLab8Test {
 		assertEquals(90,BoardUtil.getTileBag(b).size());
 		Util.PrintEnd(new Throwable().getStackTrace()[0].getMethodName());
 	}
-	
+ 	
 	@Test
 	public void GameTest1() {
 		Util.PrintStart(new Throwable().getStackTrace()[0].getMethodName());

@@ -67,10 +67,13 @@ public class Board {
 	 * @throws DrawException
 	 */
 	protected Letter drawLetter() throws DrawException {
-		// TODO: Complete this method
+		if (tileBag.isEmpty()) {
+			throw new DrawException(eDrawExceptionType.TileBagEmpty);
+		}
+		Letter letter = tileBag.get(0);
+		tileBag.remove(0);
+		return letter;
 
-		// FIXME: I don't want to return null!
-		return null;
 	}
 
 	/**
@@ -82,9 +85,8 @@ public class Board {
 	 * @return - ArrayList<Letter> of remaining tiles
 	 */
 	private ArrayList<Letter> getTileBag() {
-		// TODO: Complete this method
-		// FIXME: I don't want to return null
-		return null;
+		
+		return tileBag;
 	}
 
 	/**
@@ -97,6 +99,16 @@ public class Board {
 	 */
 	private void RemoveLettersFromTileBag(ArrayList<Letter> removeLetters) {
 		// TODO: Complete this method
+		for(Letter rm:removeLetters) {
+			for (int i = 0; i < tileBag.size(); i++) {
+				Letter l = tileBag.get(i);
+				if(l.getChLetter() == rm.getChLetter()) {	
+					tileBag.set(i, null);
+					break;
+				}
+			}
+		}
+		
 	}
 
 	/**
@@ -108,7 +120,16 @@ public class Board {
 	 */
 	private void CreateTileBag() {
 		// TODO: Complete this method
-	}
+		String formula="A-9, B-2, C-2, D-4, E-12, F-2, G-3, H-2, I-9, J-1, K-1, L-4, M-2, N-6, O-8, P-2, Q-1, R-6, S-4, T-6, U-4, V-2, W-2, X-1, Y-2, Z-1, _-2";
+		for(int i=0;i<formula.length();i++){
+			if(Character.isDigit(formula.charAt(i))&&formula.charAt(i-2)!='E') {
+				AddLetterToTileBag(formula.charAt(i-2),Character.getNumericValue(formula.charAt(1)));
+				}else if(formula.charAt(i-2)=='E'){
+					AddLetterToTileBag('E',12);
+				}
+			}
+		}
+	
 
 	/**
 	 * AddLetterToTileBag - Add a single letter to the tilebag.
@@ -118,7 +139,9 @@ public class Board {
 	 * @since Lab #8
 	 */
 	private void AddLetterToTileBag(Character c, int num) {
-		// TODO: Complete this method
+		for(int j=0;j<num;j++) {
+			tileBag.add(new Letter(c));
+		}
 	}
 
 	public boolean isAnySpaceUsed(ArrayList<Space> spaces) {
